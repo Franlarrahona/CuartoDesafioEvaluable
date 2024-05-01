@@ -1,0 +1,22 @@
+<div>
+    <h1>Lista de productos</h1>
+    <ul>
+        {{#each data}}
+            <li> id:{{id}} producto:{{nombre}}, {{descripcion}} precio:{{precio}} categoria:{{categoria}}</li>
+        {{/each}}
+    </ul>
+</div>
+
+<script src="https://cdn.socket.io/4.7.5/socket.io.min.js" integrity="sha384-2huaZvOR9iDzHqslqwpR87isEmrfxqyWOF7hr7BY6KG0+hVKLoEXMPUJw3ynWuhO" crossorigin="anonymous"></script>
+<script>
+const serverAddress = 'ws://localhost:8080';
+const socketClient = io(serverAddress);
+
+socketClient.on('newProduct', data => {
+    console.log(data);
+    window.location.reload();
+})
+
+
+
+</script>
